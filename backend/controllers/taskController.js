@@ -2,7 +2,7 @@ const asyncHandler = require('express-async-handler');
 const Task = require('../models/taskModel');
 const User = require('../models/userModel');
 
-const getTasks = asyncHandler(async (req, res) => {
+const getTask = asyncHandler(async (req, res) => {
     const tasks = await Task.find({user: req.user.id});
     res.status(200).json(tasks);
 })
@@ -62,4 +62,4 @@ const deleteTask = asyncHandler(async (req, res) => {
     res.status(200).json({ id: req.params.id });
 })
 
-module.exports = { getTasks, setTask, updateTask, deleteTask };
+module.exports = { getTask, setTask, updateTask, deleteTask };
